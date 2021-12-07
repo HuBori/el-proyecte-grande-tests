@@ -22,4 +22,8 @@ public class CreateEmployeePage extends GeneralPage {
     private final SelenideElement employeePrivilegesDropdownTrigger = $x("//input[@id='privilege']");
     //TODO employeePrivilegesDropdownTrigger drop down options
     private final SelenideElement submitBtn = $x("//button[contains(text(),'Submit')]");
+
+    public CreateEmployeePage() {
+        super(userDisplayedName);
+    }
 }
