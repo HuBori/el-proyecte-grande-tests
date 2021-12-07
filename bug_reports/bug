@@ -1,0 +1,6 @@
+should filter all employees not just the ones on current page
+logged in - after refresh visibly logged out but actually logged in
+shouldn't store password in input value attribute
+after logout shouldn't fill login fields automatically
+employee edits should be saved
+after filter transactions when filter deleted the page dies
