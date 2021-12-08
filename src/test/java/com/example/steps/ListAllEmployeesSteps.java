@@ -10,7 +10,7 @@ public class ListAllEmployeesSteps {
     public void iAmOnListAllEmployeesPage() {
     }
 
-    @And("I have {int} of employees")
+    @Given("I have {int} of employees")
     public void iHaveOfEmployees(int numberOfEmployees) {
 
     }
@@ -58,5 +58,18 @@ public class ListAllEmployeesSteps {
     @When("I press prev button")
     public void iPressPrevButton() {
 
+    }
+
+    @And("employee {string} is present in the list")
+    public void employeeIsPresentInTheList(String employeeName) {
+
+    }
+
+    @When("I click on {string}")
+    public void iClickOn(String employeeName) {
+    }
+
+    @Then("I should be redirected to {string} details")
+    public void iShouldBeRedirectedToDetails(String employeeName) {
     }
 }
