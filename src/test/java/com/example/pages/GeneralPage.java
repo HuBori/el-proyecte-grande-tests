@@ -14,4 +14,14 @@ public abstract class GeneralPage {
     private final SelenideElement employeesCreateOption = $x("//a[@href='/create-employee']");
     private final SelenideElement transactionsDropDownBtn = $x("//button[contains(text(),'Transactions')]");
     private final SelenideElement transactionsOption = $x("//a[@href='/transactions']");
+    private final SelenideElement logoutBtn = $x("//button[contains(text(),'Logout')]");
+    private final SelenideElement userDisplayedName;
+
+    public GeneralPage() {
+        this.userDisplayedName = null;
+    }
+
+    protected GeneralPage(String userName) {
+        this.userDisplayedName = $x("//nav/div/span/span/a[contains(text(),'"+userName+"')]");
+    }
 }
