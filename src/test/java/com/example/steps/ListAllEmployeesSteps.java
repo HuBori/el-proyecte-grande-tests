@@ -8,19 +8,18 @@ import io.cucumber.java.en.When;
 
 public class ListAllEmployeesSteps {
     ListAllEmployeeUtility utility = new ListAllEmployeeUtility();
+    int numberOfEmployees;
 
     @Given("I am on list all employees page")
     public void iAmOnListAllEmployeesPage() {
         utility.openPage();
     }
 
-    @Given("I have {int} of employees")
-    public void iHaveNumberOfEmployees(int numberOfEmployees) {
+    @Given("I have x of employees")
+    public void iHaveNumberOfEmployees() {numberOfEmployees = utility.getEmployeeNumber();}
 
-    }
-
-    @Then("I should see {int} as total number of employees")
-    public void iShouldSeeAsTotalNumberOfEmployees(int numberOfEmployees) {
+    @Then("I should see x as total number of employees")
+    public void iShouldSeeAsTotalNumberOfEmployees() {
 
     }
 
@@ -41,7 +40,7 @@ public class ListAllEmployeesSteps {
 
     @Then("next button should be active")
     public void nextButtonShouldBeActive() {
-        
+        utility.isNextBtnActive();
     }
 
     @When("I press next button")

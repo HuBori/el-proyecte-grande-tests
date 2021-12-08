@@ -11,6 +11,7 @@ public class ListEmployeesPage extends GeneralPage {
     private final SelenideElement prevBtn = $x("//button[contains(text(),'Prev')]");
     private final SelenideElement filterByNameField = $x("//input[@placeholder='Filter by name']");
     private final SelenideElement employeesTable = $x("//table"); // maybe use an id?
+    private final SelenideElement numberOfEmployeesDiv = $x("//div[@class='showText']");
     private SelenideElement employeeLink;
 
 
@@ -18,5 +19,13 @@ public class ListEmployeesPage extends GeneralPage {
         // same name employees???? maybe use the database ids???
         this.employeeName = employeeName;
         this.employeeLink = $x("//a[contains(text(),'"+ employeeName+"')]");
+    }
+
+    public SelenideElement getNumberOfEmployeesDiv() {
+        return numberOfEmployeesDiv;
+    }
+
+    public SelenideElement getNextBtn() {
+        return nextBtn;
     }
 }

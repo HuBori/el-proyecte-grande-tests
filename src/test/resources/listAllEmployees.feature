@@ -6,8 +6,8 @@ Feature: List All Employees
 
   Scenario: Check employees number
     # WARNING hardcoded number somehow make it automatic (maybe get actual database count? notice deleted status)
-    Given I have 23 of employees
-    Then I should see 23 as total number of employees
+    Given I have x of employees
+    Then I should see x as total number of employees
 
   Scenario Outline: employee data available by clicking their name
     And employee "<name>" is present in the list
