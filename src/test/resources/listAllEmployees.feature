@@ -2,17 +2,22 @@ Feature: List All Employees
 
   Background: User is Logged In
     Given I navigate to the login page
-    When I submit "username" and "password"
-    Then I should be logged in
+    Given I am on list all employees page
 
   Scenario: Check employees number
-    Given I am on list all employees page
     # WARNING hardcoded number somehow make it automatic (maybe get actual database count? notice deleted status)
-    And I have 23 of employees
+    Given I have 23 of employees
     Then I should see 23 as total number of employees
 
+  Scenario Outline: employee data available by clicking their name
+    And employee "<name>" is present in the list
+    When I click on "<name>"
+    Then I should be redirected to "<name>" details
+    Examples:
+      | name       |
+      | Teszt Elek |
+
   Scenario Outline: Filter All Employees By Name
-    Given I am on list all employees page
     When I search for "<name>" in the search bar
     Then I should see the search results "<name>" "<valid>"
 
