@@ -13,6 +13,7 @@ public class ListEmployeesPage extends GeneralPage {
     private final SelenideElement employeesTable = $x("//table"); // maybe use an id?
     private SelenideElement employeeLink;
 
+
     public void setEmployeeNameAndLink(String employeeName) {
         // same name employees???? maybe use the database ids???
         this.employeeName = employeeName;
