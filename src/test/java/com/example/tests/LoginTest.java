@@ -1,8 +1,11 @@
 package com.example.tests;
 
 import com.example.utility.LoginUtility;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.Assertions;
 
 public class LoginTest {
     private LoginUtility utility = new LoginUtility();
@@ -25,5 +28,15 @@ public class LoginTest {
     @When("I click login button")
     public void iClickLoginButton() {
         utility.clickLogin();
+    }
+
+    @Then("user should be logged in")
+    public void userShouldBeLoggedIn() {
+        Assertions.assertTrue(utility.isLoggedIn());
+    }
+
+    @And("is on url")
+    public void isOnUrl() {
+        utility.openHomePage();
     }
 }

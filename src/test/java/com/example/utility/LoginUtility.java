@@ -4,34 +4,44 @@ import com.codeborne.selenide.WebDriverRunner;
 import com.example.pages.HomePage;
 import com.example.pages.ListEmployeesPage;
 import com.example.pages.modals.LogInModal;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.open;
 
-public class LoginUtility {
+public class LoginUtility implements OnPage{
     WebDriverWait wait;
     LogInModal loginModal = new LogInModal();
     HomePage homePage = new HomePage();
     ListEmployeesPage listEmployeesPage = new ListEmployeesPage();
 
+
     public void login() {
-        open(homePage.url);
         if (!isLoggedIn()) {
             homePage.getLogInBtn().click();
-            wait = new WebDriverWait(WebDriverRunner.getWebDriver(), 5);
-            // TODO: wait for loginForm?
+            wait.until(ExpectedConditions.visibilityOf(loginModal.getLoginForm()));
             fillCredentials("valid", "valid");
             clickLogin();
         }
-        // assertTrue(isLoggedIn());
+    }
+
+    public void openHomePage(){
+        navigateToUrl(homePage.url);
     }
 
     public void logout() {
-        homePage.getLogoutBtn().click();
+        if(isLoggedIn()) {
+            homePage.getLogoutBtn().click();
+        }
     }
 
-    private boolean isLoggedIn() {
-        open(listEmployeesPage.url);
+    public boolean isLoggedIn() {
+        wait = new WebDriverWait(WebDriverRunner.getWebDriver(), 5);
+        navigateToUrl(listEmployeesPage.url, wait);
+        System.out.println(listEmployeesPage.url);
+        System.out.println(WebDriverRunner.getWebDriver().getCurrentUrl());
         return listEmployeesPage.url.equals(WebDriverRunner.getWebDriver().getCurrentUrl());
     }
 
