@@ -20,10 +20,7 @@ public class LoginUtility implements OnPage{
 
     public void login() {
         if (!isLoggedIn()) {
-            homePage.getLogInBtn().click();
-            wait.until(ExpectedConditions.visibilityOf(loginModal.getLoginForm()));
             fillCredentials("valid", "valid");
-            clickLogin();
         }
     }
 
@@ -39,15 +36,18 @@ public class LoginUtility implements OnPage{
 
     public boolean isLoggedIn() {
         wait = new WebDriverWait(WebDriverRunner.getWebDriver(), 5);
-        navigateToUrl(listEmployeesPage.url, wait);
-        System.out.println(listEmployeesPage.url);
-        System.out.println(WebDriverRunner.getWebDriver().getCurrentUrl());
-        return listEmployeesPage.url.equals(WebDriverRunner.getWebDriver().getCurrentUrl());
+        if (loginModal.modal.isDisplayed()){
+            wait.until(ExpectedConditions.invisibilityOf(loginModal.modal));
+        }
+        return !homePage.getLogInBtn().isDisplayed();
     }
 
     public void fillCredentials(String username, String password) {
+        homePage.getLogInBtn().click();
+        wait.until(ExpectedConditions.visibilityOf(loginModal.getLoginForm()));
         loginModal.getUsernameField().sendKeys(getUsername(username));
         loginModal.getPasswordField().sendKeys(getPassword(password));
+        clickLogin();
     }
 
     private String getUsername(String type) {

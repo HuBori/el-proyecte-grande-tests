@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.$x;
 public abstract class GeneralPage {
     public final String url = "http://localhost:3000/";
     private final SelenideElement logInBtn = $x(
-            "//nav/div[@class='container']/span/button[@style='background-color: transparent; border: none;']");
+            "//nav/div[@class='container']/span/button[@style='background-color: transparent; border: none;']/..");
     private final SelenideElement homeBtn = $x("//a[@href='/home']");
     private final SelenideElement employeesDropDownBtn = $x("//button[contains(text(),'Employees')]");
     private final SelenideElement employeesListOption = $x("//a[@href='/employees']");
