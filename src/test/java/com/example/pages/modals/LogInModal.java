@@ -11,4 +11,28 @@ public class LogInModal {
     private final SelenideElement passwordField = $x("//input[@id='formBasicPassword']");
     private final SelenideElement closeBtn = $x("//button[contains(text(),'Close')]");
     private final SelenideElement loginBtn = $x("//button[contains(text(),'Login')]");
+
+    public SelenideElement getModal() {
+        return modal;
+    }
+
+    public SelenideElement getLoginForm() {
+        return loginForm;
+    }
+
+    public SelenideElement getUsernameField() {
+        return usernameField;
+    }
+
+    public SelenideElement getPasswordField() {
+        return passwordField;
+    }
+
+    public SelenideElement getCloseBtn() {
+        return closeBtn;
+    }
+
+    public SelenideElement getLoginBtn() {
+        return loginBtn;
+    }
 }
