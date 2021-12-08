@@ -1,7 +1,7 @@
 Feature: List All Employees
 
   Background: User is Logged In
-    Given user should be logged in
+    Given user is logged in
     Given I am on list all employees page
 
   Scenario: Check employees number
