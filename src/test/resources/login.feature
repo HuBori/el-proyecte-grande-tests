@@ -37,7 +37,7 @@ Feature: Login
 
   Scenario: Valid login
     Given user is logged out
-    Given login credentials are filled with "<username>" and "<password>"
+    Given login credentials are filled with "valid" and "valid"
     When I click login button
     Then user is logged in
 

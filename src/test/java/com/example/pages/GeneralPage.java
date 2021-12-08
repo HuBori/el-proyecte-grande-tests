@@ -24,4 +24,44 @@ public abstract class GeneralPage {
     protected GeneralPage(String userName) {
         this.userDisplayedName = $x("//nav/div/span/span/a[contains(text(),'"+userName+"')]");
     }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public SelenideElement getLogInBtn() {
+        return logInBtn;
+    }
+
+    public SelenideElement getHomeBtn() {
+        return homeBtn;
+    }
+
+    public SelenideElement getEmployeesDropDownBtn() {
+        return employeesDropDownBtn;
+    }
+
+    public SelenideElement getEmployeesListOption() {
+        return employeesListOption;
+    }
+
+    public SelenideElement getEmployeesCreateOption() {
+        return employeesCreateOption;
+    }
+
+    public SelenideElement getTransactionsDropDownBtn() {
+        return transactionsDropDownBtn;
+    }
+
+    public SelenideElement getTransactionsOption() {
+        return transactionsOption;
+    }
+
+    public SelenideElement getLogoutBtn() {
+        return logoutBtn;
+    }
+
+    public SelenideElement getUserDisplayedName() {
+        return userDisplayedName;
+    }
 }
