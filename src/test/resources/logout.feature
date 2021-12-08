@@ -8,14 +8,14 @@ Feature: Logout
   There is a logged out state in which only homepage and login are available
 
   Scenario: Successful logout
-    Given user should be logged out
-    When click logout button
-    Then user is logged in: "false"
+    Given user is logged out
+    When I click logout button
+    Then user should be logged in
 
   Scenario Outline: Only specific functions are available
-    Given user should be logged out
-    When click "<function>" button
-    Then the availability of "<function>" is set to "<available>"
+    Given user is logged out
+    When I click "<function>" button
+    Then the availability of "<function>" should be set to "<available>"
 
     Examples:
     | function        | available |
