@@ -13,9 +13,6 @@ public class TransactionsPage extends GeneralPage {
     private final SelenideElement prevBtn = $x("//button[contains(text(),'Prev')]");
     private final SelenideElement transactionTable = $x("//table[@class='transaction-list table table-striped']");
 
-    public TransactionsPage() {
-        super(userDisplayedName);
-    }
     //TODO table without any lever, ask about it.
 
 }
