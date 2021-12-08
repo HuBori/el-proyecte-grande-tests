@@ -8,7 +8,7 @@ Feature: Logout
   There is a logged out state in which only homepage and login are available
 
   Scenario: Successful logout
-    Given user should be logged out
+    Given user should be logged in
     When click logout button
     Then user is logged in: "false"
 
@@ -18,9 +18,8 @@ Feature: Logout
     Then the availability of "<function>" is set to "<available>"
 
     Examples:
-    | function        | available |
-    | login           | true      |
-    | home            | true      |
-    | employee list   | false     |
-    | create employee | false     |
-    | transaction     | false     |
+      | function        | available |
+      | home            | true      |
+      | employee list   | false     |
+      | create employee | false     |
+      | transaction     | false     |
