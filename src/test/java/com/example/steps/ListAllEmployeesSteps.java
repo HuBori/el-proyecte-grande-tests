@@ -1,17 +1,21 @@
 package com.example.steps;
 
+import com.example.utility.ListAllEmployeeUtility;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class ListAllEmployeesSteps {
+    ListAllEmployeeUtility utility = new ListAllEmployeeUtility();
+
     @Given("I am on list all employees page")
     public void iAmOnListAllEmployeesPage() {
+        utility.openPage();
     }
 
     @Given("I have {int} of employees")
-    public void iHaveOfEmployees(int numberOfEmployees) {
+    public void iHaveNumberOfEmployees(int numberOfEmployees) {
 
     }
 
