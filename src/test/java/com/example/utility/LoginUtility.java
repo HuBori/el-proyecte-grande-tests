@@ -7,10 +7,6 @@ import com.example.pages.modals.LogInModal;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
-import static com.codeborne.selenide.Selenide.open;
-
 public class LoginUtility implements OnPage{
     WebDriverWait wait;
     LogInModal loginModal = new LogInModal();
@@ -68,5 +64,9 @@ public class LoginUtility implements OnPage{
 
     public void clickLogin() {
         loginModal.getLoginBtn().click();
+    }
+
+    public void closeModal() {
+        loginModal.getCloseBtn().click();
     }
 }

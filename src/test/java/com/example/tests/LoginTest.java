@@ -35,8 +35,18 @@ public class LoginTest {
         Assertions.assertTrue(utility.isLoggedIn());
     }
 
+    @Then("user should not be logged in")
+    public void userShouldNotBeLoggedIn() {
+        Assertions.assertFalse(utility.isLoggedIn());
+    }
+
     @And("is on url")
     public void isOnUrl() {
         utility.openHomePage();
+    }
+
+    @And("close login form")
+    public void closeLoginForm() {
+        utility.closeModal();
     }
 }
