@@ -1,18 +1,18 @@
 package com.example.utility;
 
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import com.example.pages.HomePage;
-import com.example.pages.ListEmployeesPage;
 import com.example.pages.modals.LogInModal;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LoginUtility implements OnPage{
     WebDriverWait wait;
     LogInModal loginModal = new LogInModal();
     HomePage homePage = new HomePage();
-    ListEmployeesPage listEmployeesPage = new ListEmployeesPage();
-
 
     public void login() {
         if (!isLoggedIn()) {
@@ -41,9 +41,14 @@ public class LoginUtility implements OnPage{
 
     public void fillCredentials(String username, String password) {
         homePage.getLogInBtn().click();
-        wait.until(ExpectedConditions.visibilityOf(loginModal.getLoginForm()));
-        loginModal.getUsernameField().sendKeys(getUsername(username));
-        loginModal.getPasswordField().sendKeys(getPassword(password));
+        //wait.until(ExpectedConditions.visibilityOf(loginModal.getLoginForm()));
+        wait.withTimeout(Duration.ofSeconds(3));
+        username = getUsername(username);
+        password = getPassword(password);
+        SelenideElement unField = loginModal.getUsernameField();
+        SelenideElement pwField = loginModal.getPasswordField();
+        if (username != null) unField.sendKeys(username);
+        if (password != null) pwField.sendKeys(password);
         clickLogin();
     }
 
@@ -51,7 +56,8 @@ public class LoginUtility implements OnPage{
         switch (type.toLowerCase()) {
             case "valid": return System.getenv("username");
             case "invalid": return System.getenv("other-username");
-            default: return "";
+            case "empty": return "";
+            default: throw new IllegalArgumentException("The username type '" + type + "' is unhandled");
         }
     }
 
@@ -59,7 +65,8 @@ public class LoginUtility implements OnPage{
         switch (type.toLowerCase()) {
             case "valid": return System.getenv("password");
             case "invalid": return System.getenv("other-password");
-            default: return "";
+            case "empty": return "";
+            default: throw new IllegalArgumentException("The password type '" + type + "' is unhandled");
         }
     }
 
@@ -68,6 +75,8 @@ public class LoginUtility implements OnPage{
     }
 
     public void closeModal() {
-        loginModal.getCloseBtn().click();
+        if (loginModal.modal.isDisplayed()) {
+            loginModal.getCloseBtn().click();
+        }
     }
 }

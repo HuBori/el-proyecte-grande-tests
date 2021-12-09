@@ -1,11 +1,3 @@
-# TODO: implement test steps
-
-  # - when logged out login function available
-  # - invalid login when invalid or empty username or password
-  # - valid login when valid username and password
-  # - invalid login when username and password does not match
-  # - stays logged in after page closed and reopened (but not when server restarted)
-
 Feature: Login
   In logged out state login is available, login not allowed unless valid username-password pair given
 
@@ -25,7 +17,6 @@ Feature: Login
 
     Examples:
       | function        |
-      | login           |
       | home            |
       | employee list   |
       | create employee |
