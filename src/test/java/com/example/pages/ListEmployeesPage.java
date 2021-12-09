@@ -13,6 +13,8 @@ public class ListEmployeesPage extends GeneralPage {
     private final SelenideElement employeesTable = $x("//table"); // maybe use an id?
     private final SelenideElement numberOfEmployeesDiv = $x("//div[@class='showText']");
     private SelenideElement employeeLink;
+    private SelenideElement firstEmployeeLinkDisplayed;
+    private SelenideElement lastEmployeeLinkDisplayed;
 
 
     public void setEmployeeNameAndLink(String employeeName) {
@@ -27,5 +29,38 @@ public class ListEmployeesPage extends GeneralPage {
 
     public SelenideElement getNextBtn() {
         return nextBtn;
+    }
+
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public SelenideElement getPrevBtn() {
+        return prevBtn;
+    }
+
+    public SelenideElement getFilterByNameField() {
+        return filterByNameField;
+    }
+
+    public SelenideElement getEmployeesTable() {
+        return employeesTable;
+    }
+
+    public SelenideElement getEmployeeLink() {
+        return employeeLink;
+    }
+
+    public void setFirstAndLastEmployeeLinkDisplayed(){
+        firstEmployeeLinkDisplayed = $x("//tbody/tr[1]/td/following-sibling::td");
+        lastEmployeeLinkDisplayed = $x("(//tr[last()]/td/following-sibling::td)");
+    }
+
+    public SelenideElement getFirstEmployeeLinkDisplayed() {
+        return firstEmployeeLinkDisplayed;
+    }
+
+    public SelenideElement getLastEmployeeLinkDisplayed() {
+        return lastEmployeeLinkDisplayed;
     }
 }
