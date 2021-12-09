@@ -12,10 +12,6 @@ public class LogInModal {
     private final SelenideElement closeBtn = $x("//button[contains(text(),'Close')]");
     private final SelenideElement loginBtn = $x("//button[contains(text(),'Login')]");
 
-    public SelenideElement getModal() {
-        return modal;
-    }
-
     public SelenideElement getLoginForm() {
         return loginForm;
     }

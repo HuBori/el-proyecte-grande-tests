@@ -23,6 +23,9 @@ public class GeneralUtility {
             case "login":
                 homePage.getLogInBtn().click();
                 break;
+            case "logout":
+                homePage.getLogoutBtn().click();
+                break;
             case "employee list":
                 homePage.getEmployeesDropDownBtn().click();
                 homePage.getEmployeesListOption().click();
@@ -39,6 +42,8 @@ public class GeneralUtility {
                 homePage.getHomeBtn().click();
                 break;
         }
+        WebDriverWait wait = new WebDriverWait(WebDriverRunner.getWebDriver(), 5);
+        wait.withTimeout(Duration.ofSeconds(3));
     }
 
     public boolean isPageOpen(String page) {

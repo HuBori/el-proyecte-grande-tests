@@ -31,6 +31,7 @@ public class LoginUtility implements OnPage{
     }
 
     public boolean isLoggedIn() {
+        openHomePage();
         wait = new WebDriverWait(WebDriverRunner.getWebDriver(), 5);
         if (loginModal.modal.isDisplayed()){
             wait.until(ExpectedConditions.invisibilityOf(loginModal.modal));
