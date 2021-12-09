@@ -1,6 +1,9 @@
 Feature: Logout
   There is a logged out state in which only homepage and login are available
 
+  Background:
+    Given is on url
+
   Scenario: Successful logout
     Given user is logged in
     When I click "logout" button
