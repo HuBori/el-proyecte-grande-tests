@@ -27,11 +27,15 @@ public class GeneralUtility {
                 homePage.getLogoutBtn().click();
                 break;
             case "employee list":
-                homePage.getEmployeesDropDownBtn().click();
+                if (!homePage.getEmployeesListOption().isDisplayed()) {
+                    homePage.getEmployeesDropDownBtn().click();
+                }
                 homePage.getEmployeesListOption().click();
                 break;
             case "create employee":
-                homePage.getEmployeesDropDownBtn().click();
+                if (!homePage.getEmployeesCreateOption().isDisplayed()) {
+                    homePage.getEmployeesDropDownBtn().click();
+                }
                 homePage.getEmployeesCreateOption().click();
                 break;
             case "transaction":
@@ -64,7 +68,6 @@ public class GeneralUtility {
                 break;
             default:
                 expectedUrl = homePage.url;
-                break;
         }
         return expectedUrl.equals(currentUrl);
     }

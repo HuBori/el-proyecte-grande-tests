@@ -11,6 +11,7 @@ public class LogInModal {
     private final SelenideElement passwordField = $x("//input[@id='formBasicPassword']");
     private final SelenideElement closeBtn = $x("//button[contains(text(),'Close')]");
     private final SelenideElement loginBtn = $x("//button[contains(text(),'Login')]");
+    private final SelenideElement errorMessage = $x("//span[@class='error-message']");
 
     public SelenideElement getLoginForm() {
         return loginForm;
@@ -30,5 +31,9 @@ public class LogInModal {
 
     public SelenideElement getLoginBtn() {
         return loginBtn;
+    }
+
+    public SelenideElement getErrorMessage() {
+        return errorMessage;
     }
 }

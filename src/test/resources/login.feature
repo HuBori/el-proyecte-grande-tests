@@ -7,7 +7,6 @@ Feature: Login
 
   Scenario: Valid login
     Given login credentials are filled with "valid" and "valid"
-    When I click login button
     Then user should be logged in
 
   Scenario Outline: All functions are available
@@ -25,7 +24,6 @@ Feature: Login
   Scenario Outline: menu option clicked
     When I click "<function>" button
     Given login credentials are filled with "valid" and "valid"
-    When I click login button
     Then "<function>" page should be open
 
     Examples:
@@ -37,9 +35,8 @@ Feature: Login
 
   Scenario Outline: Empty username or password
     Given login credentials are filled with "<username>" and "<password>"
-    When I click login button
+    When close login form
     Then user should not be logged in
-    And close login form
 
     Examples:
       | username  | password  |
@@ -48,7 +45,7 @@ Feature: Login
 
   Scenario Outline: Invalid pair of username and password
     Given login credentials are filled with "<username>" and "<password>"
-    When I click login button
+    When close login form
     Then user should not be logged in
 
     Examples:

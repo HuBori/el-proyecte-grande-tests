@@ -1,5 +1,6 @@
 package com.example.utility;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import com.example.pages.HomePage;
@@ -31,17 +32,19 @@ public class LoginUtility implements OnPage{
     }
 
     public boolean isLoggedIn() {
-        openHomePage();
         wait = new WebDriverWait(WebDriverRunner.getWebDriver(), 5);
-        if (loginModal.modal.isDisplayed()){
+        if (loginModal.modal.isDisplayed() && !loginModal.getErrorMessage().isDisplayed()){
             wait.until(ExpectedConditions.invisibilityOf(loginModal.modal));
+        } else if (loginModal.getErrorMessage().isDisplayed()) {
+            closeModal();
         }
         return !homePage.getLogInBtn().isDisplayed();
     }
 
     public void fillCredentials(String username, String password) {
-        homePage.getLogInBtn().click();
-        //wait.until(ExpectedConditions.visibilityOf(loginModal.getLoginForm()));
+        if (!loginModal.modal.isDisplayed()) {
+            homePage.getLogInBtn().click();
+        }
         wait.withTimeout(Duration.ofSeconds(3));
         username = getUsername(username);
         password = getPassword(password);

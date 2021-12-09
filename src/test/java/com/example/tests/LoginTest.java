@@ -1,11 +1,15 @@
 package com.example.tests;
 
+import com.codeborne.selenide.WebDriverRunner;
 import com.example.utility.LoginUtility;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -34,6 +38,8 @@ public class LoginTest {
 
     @Then("user should be logged in")
     public void userShouldBeLoggedIn() {
+        WebDriverWait wait = new WebDriverWait(WebDriverRunner.getWebDriver(), 5);
+        wait.withTimeout(Duration.ofSeconds(3));
         Assertions.assertTrue(utility.isLoggedIn());
     }
 
@@ -47,8 +53,12 @@ public class LoginTest {
         utility.openHomePage();
     }
 
-    @And("close login form")
+    @When("close login form")
     public void closeLoginForm() {
         utility.closeModal();
-    }
+    }/*
+
+    @Given("open login modal")
+    public void openLoginModal() {
+    }*/
 }
